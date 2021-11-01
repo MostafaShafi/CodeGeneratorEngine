@@ -71,3 +71,6 @@ Jenkinsfile
 /.idea
 /.idea/*
 *.log
+.mvn/
+mvnw
+mvnw.cmd
