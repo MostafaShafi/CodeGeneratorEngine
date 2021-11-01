@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class ReposServiceGenerator {
+public class CodeGenerator {
     static String serviceInputTemplate = "vtemplates/Service.vm";
     static String repositoryInputTemplate = "vtemplates/Repository.vm";
     static String controllerInputTemplate = "vtemplates/Controller.vm";
