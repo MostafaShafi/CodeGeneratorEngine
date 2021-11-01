@@ -1,0 +1,22 @@
+package com.example.shesh.Models;
+
+@Entity
+@Table(name = "${className}")
+public ${className} {
+
+    #foreach( $property in $properties )
+    @SerializedName("${property.fieldName.substring(0, 1).toUpperCase()}${property.fieldName.substring(1)}")
+    @Column(name = "${property.fieldName.substring(0, 1).toUpperCase()}${property.fieldName.substring(1)}")
+    private $property.fieldType _$property.fieldName;
+    #end
+
+    #foreach( $property in $properties )
+    public ${property.fieldType} get${property.fieldName.substring(0, 1).toUpperCase()}${property.fieldName.substring(1)}() {
+        return this.${property.fieldName};
+    }
+
+    public void set${property.fieldName.substring(0, 1).toUpperCase()}${property.fieldName.substring(1)}(${property.fieldType} ${property.fieldName}) {
+        this.${property.fieldName} = ${property.fieldName};
+    }
+    #end
+}

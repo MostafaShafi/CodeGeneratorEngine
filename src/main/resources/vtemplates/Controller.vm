@@ -1,0 +1,54 @@
+package com.example.shesh.Controllers;
+
+import com.example.shesh.Models.${className};
+import com.example.shesh.Services.${className}Service;
+import com.google.gson.Gson;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+
+@RestController
+public class ${className}Controller {
+
+    @Autowired
+    ${className}Service service;
+    @Autowired
+    private Gson gson;
+
+    @PostMapping("/add${className.toLowerCase()}")
+    public ${className} add${className}(@Valid @RequestBody ${className} ${className.toLowerCase()}, BindingResult result) {
+        return service.set${className}(${className.toLowerCase()});
+    }
+
+    @PutMapping("/edit${className.toLowerCase()}/{id}")
+    public ${className} update${className}(@PathVariable(value = "id") Long id, @Valid @RequestBody ${className} ${className.toLowerCase()}) {
+        return service.update${className}(${className.toLowerCase()});
+    }
+
+    @GetMapping("/${className.toLowerCase()}/{id}")
+    public String get${className}(@PathVariable(value = "id") Long id) {
+        return gson.toJson(service.get${className}ById(id));
+    }
+
+    @GetMapping("/${className.toLowerCase()}s")
+    public String get${className}s() {
+        return gson.toJsonTree(service.get${className}s()).toString();
+    }
+
+    @DeleteMapping("/delete${className.toLowerCase()}/{id}")
+    public void delete${className}(@PathVariable(value = "id") Long id) {
+        service.delete${className}ById(id);
+    }
+
+    @DeleteMapping("/delete${className.toLowerCase()}")
+    public void delete${className}(@Valid @RequestBody ${className} ${className.toLowerCase()}) {
+        service.delete${className}(${className.toLowerCase()});
+    }
+
+    @DeleteMapping("/deleteall${className.toLowerCase()}s")
+    public void deleteAll${className}s() {
+        service.deleteAll${className}s();
+    }
+}

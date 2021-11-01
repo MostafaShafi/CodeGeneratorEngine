@@ -1,0 +1,45 @@
+package com.example.shesh.Services;
+
+import com.example.shesh.Models.${className};
+import com.example.shesh.Repositories.${className}Repository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+
+@Service
+public class ${className}Service {
+
+    @Autowired
+    ${className}Repository repository;
+
+    public ${className} get${className}ById(Long id) {
+    return repository.findById(id.intValue()).get();
+    }
+
+    public ArrayList<${className}> get${className}s() {
+        ArrayList<${className}> ${className.toLowerCase()}List = new ArrayList<>();
+        repository.findAll().forEach(${className.toLowerCase()} -> ${className.toLowerCase()}List.add(${className.toLowerCase()}));
+        return ${className.toLowerCase()}List;
+    }
+
+    public ${className} set${className}(${className} ${className.toLowerCase()}) {
+        return repository.save(${className.toLowerCase()});
+    }
+
+    public ${className} update${className}(${className} ${className.toLowerCase()}) {
+        return repository.save(${className.toLowerCase()});
+    }
+
+    public void delete${className}ById(Long id) {
+        repository.deleteById(id.intValue());
+    }
+
+    public void deleteAll${className}s() {
+        repository.deleteAll();
+    }
+
+    public void delete${className}(${className} ${className.toLowerCase()}) {
+        repository.delete(${className.toLowerCase()});
+    }
+}
